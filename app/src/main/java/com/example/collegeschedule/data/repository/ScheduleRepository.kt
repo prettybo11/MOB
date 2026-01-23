@@ -1,5 +1,6 @@
 package com.example.collegeschedule.data.repository
 import com.example.collegeschedule.data.api.ScheduleApi
+import com.example.collegeshedule.data.dto.GroupDto
 import com.example.collegeschedule.data.dto.ScheduleByDateDto
 class ScheduleRepository(private val api: ScheduleApi) {
     suspend fun loadSchedule(group: String): List<ScheduleByDateDto> {
@@ -8,5 +9,8 @@ class ScheduleRepository(private val api: ScheduleApi) {
             start = "2026-01-12",
             end = "2026-01-17"
         )
+    }
+    suspend fun loadGroups(): List<GroupDto> {
+        return api.getGroups()
     }
 }
